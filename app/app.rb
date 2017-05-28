@@ -81,17 +81,13 @@ module JobProjectCl
     end
 
     get '/getCompanies' do
+      content_type :json
+      
       JSON.generate(companies)
     end
 
     post '/addCompany' do
-
-      print "Something"
-      
-      company = {
-        :cvr => params['cvr']
-      }
-      companies.push(company)
+      "Message recieved"
     end
     
   end
