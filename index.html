@@ -6,30 +6,10 @@
   </head>
 
   <body>
-    <div ng-app="companyApp" ng-controller="companyCtrl">
-      <table>
-	<tr ng-repeat="company in companies">
-	  <td>{{ company.cvr }}</td>
-	</tr>
-      </table>
 
-    </div>
-    
-
-    <script>
-      var app = angular.module('companyApp', []);
-
-      app.controller('companyCtrl', function($scope, $http) {
-      $http({
-      method: "GET",
-      url: "getCompanies"
-      }).then(function success(response) {
-      $scope.companies = response.data.records;
-      }, function error(response) {
-      $scope.companies = response.statusText;
-      });
-      });
-    </script>
+    <form action="127.0.0.1:3000/addCompany" method="POST">
+      <input type="number" name="cvr">
+      <input type="submit">
     
   </body>
   

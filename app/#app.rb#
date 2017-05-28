@@ -88,10 +88,6 @@ module JobProjectCl
 
       print "Something"
       
-      company = {
-        :cvr => params['cvr']
-      }
-      companies.push(company)
     end
     
   end
