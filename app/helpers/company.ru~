@@ -1,0 +1,10 @@
+class Company
+  def initialize(cvr, name, add, city, cuntry, phone)
+    @cvr = cvr
+    @name = name
+    @add = add
+    @city = city
+    @cuntry = cuntry
+    @phone = phone
+  end
+end

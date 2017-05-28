@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Company App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  </head>
+
+  <body>
+    <div ng-app="companyApp" ng-controller="companyCtrl">
+      <table>
+	<tr ng-repeat="company in companies">
+	  <td>{{ company.cvr }}</td>
+	</tr>
+      </table>
+
+    </div>
+    
+
+    <script>
+      var app = angular.module('companyApp', []);
+
+      app.controller('companyCtrl', function($scope, $http) {
+      $http({
+      method: "GET",
+      url: "getCompanies"
+      }).then(function success(response) {
+      $scope.companies = response.data.records;
+      }, function error(response) {
+      $scope.companies = response.statusText;
+      });
+      });
+    </script>
+    
+  </body>
+  
+</html>
