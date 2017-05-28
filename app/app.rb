@@ -1,3 +1,4 @@
+
 module JobProjectCl
   class App < Padrino::Application
     register Padrino::Mailer
@@ -71,17 +72,19 @@ module JobProjectCl
       :country => "TestCountry",
       :phone => "TestPhone"
     }
-    
+
     companies = Array.new()
     companies.push(company)
+
+    get '/' do
+      content_type :json
+
+      { message: 'Hello world' }.to_json
+    end
     
     get '/companies' do
-      "<b>GET</b> Companies: <i>/getCompanies</i><br>
-           
-      <br>
-      <b>POST</b> Company: <i>/addComapny</i><br>
-      using JSON with params:<br>
-      - *<u>cvr</u>: cvr of the company"
+      content_type :json
+      
     end
 
     get '/getCompanies' do
@@ -91,11 +94,11 @@ module JobProjectCl
     post '/addCompany' do
       JSON.generate(params)
     end
-    
+
 #    get 'getCompanies/:cvr' do |cvr|
 #      res = Array.new()
 #
-#      companies.each do |company|    
+#      companies.each do |company|
 #        if company[:cvr].to_s == cvr
 #          res.push(company)
 #        end
@@ -103,6 +106,6 @@ module JobProjectCl
 #
 #      JSON.generate(res)
 #    end
-    
+
   end
 end
