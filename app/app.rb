@@ -77,9 +77,7 @@ module JobProjectCl
     companies.push(company)
 
     get '/' do
-      content_type :json
-
-      { message: 'Hello world' }.to_json
+      "Hello World"
     end
     
     get '/companies' do
