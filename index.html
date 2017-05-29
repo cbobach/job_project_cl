@@ -1,15 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <title>Company App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   </head>
 
   <body>
 
-    <form action="127.0.0.1:3000/addCompany" method="POST">
+    <input type="text" ng-model="name">
+    <p>Hello {{name}}</p>
+
+
+    <div ng-controller="CompanyCtrl">
+
+      {{ test }}
+      
+      <table>
+	<tr ng-repeat="company in companies">
+	  <td> {{ company.cvr }} </td>
+	</tr>
+      </table>
+
+    <div>
+    
+    
+      
+    
+    <form action="127.0.0.1:3000/addCompany" method="post" taget="_self">
       <input type="number" name="cvr">
       <input type="submit">
+    </form>
+
+    <script>
+      angular.module("myApp", [])
+
+      .controller("CompanyCtrl", ["$scope", function($scope, $http) {
+      $scope.test = "Hello World";
+
+      $http.get("http://127.0.0.1:3000/getCompanies").then(function successCallback(response) {
+      console.log("Succes");
+      }, function errorCallback(response) {
+      console.log("Error");
+      });
+      
+      }]);
+    </script>
     
   </body>
   

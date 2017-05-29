@@ -87,7 +87,13 @@ module JobProjectCl
     end
 
     post '/addCompany' do
-      "Message recieved"
+      company = {}
+
+      params.each do |com|
+        company[com[0]] = com[1]
+      end
+
+      companies.push(company)
     end
     
   end
