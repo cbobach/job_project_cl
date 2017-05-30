@@ -15,6 +15,7 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'sinatra-cross_origin'
 
 # Component requirements
 

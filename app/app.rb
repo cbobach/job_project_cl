@@ -3,10 +3,17 @@ module JobProjectCl
   class App < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
+
     enable :sessions
 
     require 'json'
+    require 'sinatra'
+    require 'sinatra/cross_origin'
 
+    configure do
+      enable :cross_origin
+    end
+    
     ##
     # Caching support.
     #
@@ -74,8 +81,8 @@ module JobProjectCl
     }
 
     companies = Array.new()
-    companies.push(company)
-
+    companies.push(company)    
+    
     get '/api' do
       #README
     end
