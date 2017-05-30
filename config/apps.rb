@@ -31,6 +31,7 @@ Padrino.configure_apps do
   set :protection, :except => :path_traversal
   set :protect_from_csrf, false
 
+  enable :cross_origin
   set :allow_origin, :any
   set :allow_methods, [:get, :post, :options]
   set :allow_credentials, true

@@ -3,16 +3,12 @@ module JobProjectCl
   class App < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
-
+    register Sinatra::CrossOrigin
+    
     enable :sessions
+    enable :cross_origin
 
     require 'json'
-    require 'sinatra'
-    require 'sinatra/cross_origin'
-
-    configure do
-      enable :cross_origin
-    end
     
     ##
     # Caching support.

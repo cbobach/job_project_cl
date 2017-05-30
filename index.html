@@ -3,14 +3,29 @@
   <head>
     <title>Company App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style>
+      td:hover {
+      color: blue;
+      }
+    </style>
   </head>
 
   <body>
 
     <div ng-controller="CompanyCtrl">
       <table>
+	<thead>
+	  <th>Name</th>
 	<tr ng-repeat="company in companies">
-	  <td> {{ company.cvr }} </td>
+	  <td> {{ company.name }} </td>
+	  <td>
+	      : 
+	      CVR: {{ company.cvr }}, 
+	      Address: {{ company.address }}, 
+	      City: {{ company.city }}, 
+	      Country: {{ company.coutry }}, 
+	      Phone: {{ company.phone }}
+	  </td>
 	</tr>
       </table>
 
@@ -22,7 +37,7 @@
       .controller("CompanyCtrl", function($scope, $http) {
 
       $http.get("http://127.0.0.1:3000/getCompanies").then(function successCallback(response) {
-      $scope.companies = responce.body.data;
+      $scope.companies = response.data;
       
       console.log("Succes");
       }, function errorCallback(response) {
